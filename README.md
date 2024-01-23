@@ -49,13 +49,13 @@ Clone the exercise repository: <https://github.com/ivelasq/reports-with-quarto-e
 ### For R Markdown Users
 
 * [FAQ for R Markdown Users](https://quarto.org/docs/faq/rmarkdown.html)
-* [From R Markdown to Quarto workshop](https://rstudio-conf-2022.github.io/rmd-to-quarto/) taught by Dr. Mine Çetinkaya-Rundel and Dr. Andrew Bray.
+* [From R Markdown to Quarto workshop](https://rstudio-conf-2022.github.io/rmd-to-quarto/) taught by Dr. Mine Çetinkaya-Rundel and Dr. Andrew Bray
 
 ### Quartos and reports
 
-- [Making Pretty PDFs with Quarto by Nicola Rennie by](https://nrennie.rbind.io/blog/making-pretty-pdf-quarto/)
-- [Tips for Custom Parameterized PDFs in Quarto by Meghan Hall](https://meghan.rbind.io/blog/quarto-pdfs/)
-- [Introduction to Reproducible Publications with Quarto by Torin White at R-Ladies Rome](https://www.youtube.com/watch?v=hgpL-sppw7E&t=4392s)
+- [Making Pretty PDFs with Quarto](https://nrennie.rbind.io/blog/making-pretty-pdf-quarto/) by Nicola Rennie
+- [Tips for Custom Parameterized PDFs in Quarto](https://meghan.rbind.io/blog/quarto-pdfs/) by Meghan Hall
+- [Introduction to Reproducible Publications with Quarto](https://www.youtube.com/watch?v=hgpL-sppw7E&t=4392s) by Torin White at R-Ladies Rome
 
 ### Title slide image
 
@@ -63,10 +63,10 @@ Clone the exercise repository: <https://github.com/ivelasq/reports-with-quarto-e
 
 ### knit_child()
 
-- [Generating dynamic contents in R Markdown and Quarto by Qiushi Yan](https://www.qiushiyan.dev/posts/dynamic-rmd-quarto/)
+- [Generating dynamic contents in R Markdown and Quarto](https://www.qiushiyan.dev/posts/dynamic-rmd-quarto/) by Qiushi Yan
 - [knit_child in a loop - variable as title (StackOverflow)](https://stackoverflow.com/questions/43873345/knit-child-in-a-loop-variable-as-title)
 - [How do I knit child doc uments with parameters into a main RMarkdown document? (StackOverflow)](https://stackoverflow.com/questions/70655915/how-do-i-knit-child-documents-with-parameters-into-a-main-rmarkdown-document)
 
 ### Parameterization
 
-- [Parameterized Reporting with Quarto by Jadey Ryan at R-Ladies Abuja](https://jadeyryan.quarto.pub/rladies-abuja-quarto-params/)
+- [Parameterized Reporting with Quarto](https://jadeyryan.quarto.pub/rladies-abuja-quarto-params/) by Jadey Ryan at R-Ladies Abuja

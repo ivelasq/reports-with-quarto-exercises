@@ -4,6 +4,7 @@ author: "Isabella Velásquez"
 date: today
 format:
   html:
+    embed-resources: true
     theme: [default, custom.scss]
 title-block-banner: images/flag.jpg
 execute:
@@ -11,7 +12,7 @@ execute:
   message: false
   warning: false
 params:
-  state: "California"
+  state: "Alaska"
 ---
 
 In this report, we present a detailed overview of polling places in various counties across the United States, providing information on the total number of polling places and showcasing example locations for each county on election day.[^1]
@@ -39,9 +40,9 @@ polling_places <- read_csv(here::here("data", "geocoded_polling_places.csv"))
 :::: {layout-ncol="2"}
 ::: {}
 
-* Total number of counties: **`r polling_places %>% filter(state == params$state) %>% distinct(county_name) %>% count()`**
-* Total number of polling places: **`r polling_places %>% filter(state == params$state) %>% count()`**
-* Election Day: **`r polling_places %>% filter(state == params$state) %>% pull(election_date) %>% unique()`**
+* Total number of counties: **`r polling_places |> filter(state == params$state) |> distinct(county_name) |> count()`**
+* Total number of polling places: **`r polling_places |> filter(state == params$state) |> count()`**
+* Election Day: **`r polling_places |> filter(state == params$state) |> pull(election_date) |> unique()`**
 
 :::
 
@@ -51,12 +52,12 @@ polling_places <- read_csv(here::here("data", "geocoded_polling_places.csv"))
 #| label: "fig-statemap"
 #| fig-cap: "Polling locations in the state"
 #| results: hide
-us_states <- states(cb = TRUE, resolution = "20m") %>%
+us_states <- states(cb = TRUE, resolution = "20m") |>
   filter(NAME != "Puerto Rico")
 
-ggplot(us_states %>% filter(NAME == params$state)) +
+ggplot(us_states |> filter(NAME == params$state)) +
   geom_sf() +
-  geom_point(data = polling_places %>% filter(state == params$state),
+  geom_point(data = polling_places |> filter(state == params$state),
              aes(x = longitude,
                  y = latitude),
              alpha = 0.4) +
@@ -72,7 +73,7 @@ See polling place locations in @fig-statemap.
 
 ```{r}
 #| results: hide
-counties <- polling_places %>% filter(state == params$state) %>% distinct(county_name) %>% pull()
+counties <- polling_places |> filter(state == params$state) |> distinct(county_name) |> pull()
 expanded_child <- lapply(counties,
                          function(xx)
                            knitr::knit_expand("_template_params.qmd", current_title = xx))
