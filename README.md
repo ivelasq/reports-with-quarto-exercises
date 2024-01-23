@@ -26,6 +26,10 @@ Welcome to "Getting started with report writing using Quarto"! You have two opti
 
 Download and install a recent release of [RStudio](https://posit.co/download/rstudio-desktop/) (v2023.06 or later).
 
+### Clone the exercise repository
+
+Clone the exercise repository: <https://github.com/ivelasq/reports-with-quarto-exercises>
+
 ## Webinar Slides
 
 - [Repo](https://github.com/ivelasq/2024-01-23_getting-started-with-report-writing-using-quarto)
