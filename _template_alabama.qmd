@@ -1,0 +1,13 @@
+### {{current_title}} COUNTY
+
+* Total Polling Places: `r polling_places %>% filter(state == "Alabama", county_name == "{{current_title}}") %>% count()`
+* Example Locations:
+
+```{r}
+polling_places %>% 
+  filter(state == "Alabama", 
+         county_name == "{{current_title}}") %>% 
+  head(6) %>% 
+  select(name, address.x) %>% 
+  kbl(format = "markdown")
+```

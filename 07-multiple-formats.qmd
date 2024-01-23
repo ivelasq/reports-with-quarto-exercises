@@ -1,0 +1,84 @@
+---
+title: "Polling Places Report - {{< meta params.state >}}"
+author: "Isabella Velásquez"
+date: today
+format:
+  html:
+    theme: [default, custom.scss]
+  pdf: default
+title-block-banner: images/flag.jpg
+execute:
+  echo: false
+  message: false
+  warning: false
+params:
+  state: "California"
+---
+
+In this report, we present a detailed overview of polling places in various counties across the United States, providing information on the total number of polling places and showcasing example locations for each county on election day.[^1]
+
+[^1]: Data from https://github.com/rfordatascience/tidytuesday
+
+```{r}
+#| label: setup
+library(readr)
+library(dplyr)
+library(tidyr)
+library(tidycensus)
+library(tigris)
+library(sf)
+library(ggplot2)
+library(purrr)
+library(kableExtra)
+polling_places <- read_csv(here::here("data", "geocoded_polling_places.csv"))
+```
+
+## `r params$state`
+
+### Overview
+
+:::: {layout-ncol="2"}
+::: {}
+
+* Total number of counties: **`r polling_places %>% filter(state == params$state) %>% distinct(county_name) %>% count()`**
+* Total number of polling places: **`r polling_places %>% filter(state == params$state) %>% count()`**
+* Election Day: **`r polling_places %>% filter(state == params$state) %>% pull(election_date) %>% unique()`**
+
+:::
+
+::: {}
+
+```{r}
+#| label: "fig-statemap"
+#| fig-cap: "Polling locations in the state"
+#| results: hide
+us_states <- states(cb = TRUE, resolution = "20m") %>%
+  filter(NAME != "Puerto Rico")
+
+ggplot(us_states %>% filter(NAME == params$state)) +
+  geom_sf() +
+  geom_point(data = polling_places %>% filter(state == params$state),
+             aes(x = longitude,
+                 y = latitude),
+             alpha = 0.4) +
+  theme_void() 
+```
+
+:::
+::::
+
+### POLLING PLACES BY COUNTY
+
+See polling place locations in @fig-statemap.
+
+```{r}
+#| results: hide
+counties <- polling_places %>% filter(state == params$state) %>% distinct(county_name) %>% pull()
+expanded_child <- lapply(counties,
+                         function(xx)
+                           knitr::knit_expand("_template_params.qmd", current_title = xx))
+
+parsed_child <- knitr::knit_child(text = unlist(expanded_child))
+```
+
+`r parsed_child`
