@@ -1,12 +1,12 @@
-### {{current_title}} COUNTY
+### {{current_county}} COUNTY
 
-* Total Polling Places: `r polling_places |> filter(state == params$state, county_name == "{{current_title}}") |> count()`
+* Total Polling Places: `r polling_places |> filter(state == params$state, county_name == "{{current_county}}") |> count()`
 * Example Locations:
 
 ```{r}
 polling_places |> 
   filter(state == params$state, 
-         county_name == "{{current_title}}") |> 
+         county_name == "{{current_county}}") |> 
   head(6) |> 
   select(name, address.x) |> 
   kbl(format = "markdown")

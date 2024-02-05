@@ -73,9 +73,10 @@ See polling place locations in @fig-statemap.
 ```{r}
 #| results: hide
 counties <- polling_places |> filter(state == params$state) |> distinct(county_name) |> pull()
-expanded_child <- lapply(counties,
-                         function(xx)
-                           knitr::knit_expand("_template_params.qmd", current_title = xx))
+
+expanded_child <- counties |> 
+  map(function(county) knitr::knit_expand("_template_params.qmd", current_county = county))  |> 
+  flatten()
 
 parsed_child <- knitr::knit_child(text = unlist(expanded_child))
 ```
