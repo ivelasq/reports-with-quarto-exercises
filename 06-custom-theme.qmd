@@ -12,7 +12,7 @@ execute:
   message: false
   warning: false
 params:
-  state: "Alaska"
+  state: "Texas"
 ---
 
 In this report, we present a detailed overview of polling places in various counties across the United States, providing information on the total number of polling places and showcasing example locations for each county on election day.[^1]
