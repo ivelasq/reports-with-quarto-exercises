@@ -1,7 +1,5 @@
 # Getting started with report writing using Quarto exercises
 
-## 2024-01-23 R-Ladies Nairobi webinar
-
 <!-- badges: start -->
 [![Launch RStudio Cloud](https://img.shields.io/badge/launch-cloud-75aadb?style=flat&logo=rstudio)](https://posit.cloud/content/7416825)
 <!-- badges: end -->
